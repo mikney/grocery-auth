@@ -10,6 +10,7 @@ import {
 import { AppService } from './app.service';
 import * as jwt from 'jsonwebtoken';
 import { Response } from 'express';
+import * as crypto from 'crypto';
 
 export const secretKey = 'your_secret_key';
 
@@ -42,7 +43,7 @@ export class AppController {
             { success: true, uuid: request.uuid ?? crypto.randomUUID() },
             secretKey,
             {
-                expiresIn: '1m',
+                expiresIn: '1h',
             },
         );
         return { newJwt };
