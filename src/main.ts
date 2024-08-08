@@ -31,15 +31,15 @@ const limiter = rateLimit({
             } catch (e) {
                 const error = e as { message: string };
                 if (error?.message === 'jwt expired') {
+                    console.log('jwt expired');
                     const data = jwt.decode(token) as { uuid: string };
-                    console.log(data);
                     req['uuid'] = data.uuid;
                     if (data.uuid) {
                         return data.uuid;
                     }
                 }
                 req['token'] = false;
-                console.log(e?.message);
+                console.log(`Error in verify: ` + e?.message);
                 return ip;
             }
         } else {

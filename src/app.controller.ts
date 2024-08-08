@@ -1,6 +1,15 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    HttpStatus,
+    Param,
+    Query,
+    Req,
+    Res,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import * as jwt from 'jsonwebtoken';
+import { Response } from 'express';
 
 export const secretKey = 'your_secret_key';
 
@@ -8,20 +17,24 @@ export const secretKey = 'your_secret_key';
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
-    @Get()
-    getHello(): string {
-        return this.appService.getHello();
-    }
-
-    @Get('/lol')
-    lol(
+    @Get('/auth')
+    auth(
         @Req()
         request: Request & {
             cookies: { [key: string]: string };
             token: boolean;
             uuid?: string;
         },
+        @Res({ passthrough: true })
+        response: Response,
+        @Query('secret') secret: string,
     ) {
+        if (secret !== process.env.WEB_SECRET) {
+            console.log('no secret request');
+            response.status(HttpStatus.BAD_REQUEST).send();
+            return;
+        }
+        response.status(HttpStatus.OK);
         if (request.token) {
             return { result: 'success' };
         }
