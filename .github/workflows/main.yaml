@@ -1,0 +1,27 @@
+name: ci
+
+on:
+    push:
+        branches:
+            - "main"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+        - name: Login to Yandex Cloud Container Registry
+          id: login-cr
+          uses: yc-actions/yc-cr-login@v2
+          with:
+              yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+
+        - name: Build, tag, and push image to Yandex Cloud Container Registry
+          env:
+              CR_REGISTRY: crp4nkkd1insj4hudo4t
+              CR_REPOSITORY: auth
+              IMAGE_TAG: latest
+          run: |
+              DOCKER_BUILDKIT=1 docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
+              docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
