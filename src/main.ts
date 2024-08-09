@@ -11,9 +11,9 @@ const limiter = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
     limit: async (req) => {
         if (req['token']) {
-            return 15;
+            return 60;
         } else {
-            return 5;
+            return 15;
         }
     },
     keyGenerator: (req) => {
@@ -34,6 +34,7 @@ const limiter = rateLimit({
                     console.log('jwt expired');
                     const data = jwt.decode(token) as { uuid: string };
                     req['uuid'] = data.uuid;
+                    req['isTokenValid'] = true;
                     if (data.uuid) {
                         return data.uuid;
                     }

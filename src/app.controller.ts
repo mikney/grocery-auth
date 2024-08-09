@@ -25,6 +25,7 @@ export class AppController {
             cookies: { [key: string]: string };
             token: boolean;
             uuid?: string;
+            isTokenValid?: boolean;
         },
         @Res({ passthrough: true })
         response: Response,
@@ -37,15 +38,17 @@ export class AppController {
         }
         response.status(HttpStatus.OK);
         if (request.token) {
-            return { result: 'success' };
+            return { isTokenValid: true };
         }
         const newJwt = jwt.sign(
-            { success: true, uuid: request.uuid ?? crypto.randomUUID() },
+            {
+                uuid: request.uuid ?? crypto.randomUUID(),
+            },
             secretKey,
             {
-                expiresIn: '1h',
+                expiresIn: '5m',
             },
         );
-        return { newJwt };
+        return { newJwt, isTokenValid: request?.isTokenValid ?? false };
     }
 }
