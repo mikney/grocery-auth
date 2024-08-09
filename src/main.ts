@@ -11,9 +11,9 @@ const limiter = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
     limit: async (req) => {
         if (req['token']) {
-            return 60;
+            return 45;
         } else {
-            return 15;
+            return 45;
         }
     },
     keyGenerator: (req) => {
