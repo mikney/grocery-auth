@@ -28,6 +28,7 @@
     "cookie-parser": "^1.4.6",
     "express-rate-limit": "^7.4.0",
     "jsonwebtoken": "^9.0.2",
+    "node-cache": "^5.1.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },

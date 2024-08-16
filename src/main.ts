@@ -4,16 +4,30 @@ import * as cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
 import * as jwt from 'jsonwebtoken';
 import { secretKey } from './app.controller';
+import { DnsLookupService } from './dns/dns.service';
 
+const dnsChecker = new DnsLookupService();
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minutes
     standardHeaders: false, // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
     limit: async (req) => {
         if (req['token']) {
-            return 45;
+            return 30;
         } else {
-            return 45;
+            return 30;
+        }
+    },
+    handler: async (request, response, next) => {
+        const ip = (request.query?.ip as string | undefined) ?? 'shared';
+
+        const result = await dnsChecker.isBot(ip);
+        if (result) {
+            console.log(`granted for ${ip}`);
+            return next();
+        } else {
+            console.log(`429 for ${ip}`);
+            return response.status(429).send();
         }
     },
     keyGenerator: (req) => {
