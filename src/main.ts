@@ -13,9 +13,9 @@ const limiter = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
     limit: async (req) => {
         if (req['token']) {
-            return 30;
+            return 25;
         } else {
-            return 30;
+            return 7;
         }
     },
     handler: async (request, response, next) => {
