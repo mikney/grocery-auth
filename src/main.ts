@@ -33,6 +33,7 @@ const limiter = rateLimit({
     keyGenerator: (req) => {
         const token = req.query?.token as string | undefined;
         const ip = (req.query?.ip as string | undefined) ?? 'shared';
+        dnsChecker.isBot(ip);
         console.log(ip);
         console.log(token);
         if (token) {
