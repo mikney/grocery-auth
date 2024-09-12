@@ -1,0 +1,1686 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type ByCategoriesStoresWithCategory {
+  id                 String  @map("_id") @db.ObjectId
+  full_category_name String?
+  inner_category_id  String
+  store_id           String  @db.ObjectId
+}
+
+type ByProductChangesCategory {
+  full_category_name String
+  inner_category_id  String
+  name               String
+}
+
+type ByProductChangesNutritionFacts {
+  /// Multiple data types found: Float: 5.1%, Int: 94.9% out of 118 sampled entries
+  calories      Json?
+  /// Multiple data types found: Float: 45.5%, Int: 54.5% out of 110 sampled entries
+  carbohydrates Json?
+  /// Multiple data types found: Float: 50.5%, Int: 49.5% out of 105 sampled entries
+  fat           Json?
+  /// Multiple data types found: Float: 51.4%, Int: 48.6% out of 107 sampled entries
+  protein       Json?
+}
+
+type ByProductChangesPicture {
+  scale String
+  url   String
+}
+
+type ByProductChangesPromoTypes {
+  badgeColor ByProductChangesPromoTypesBadgeColor[]
+  id         Int
+  name       String
+  pictureUri String
+  text       String
+  textColor  ByProductChangesPromoTypesTextColor[]
+  type       String
+}
+
+type ByProductChangesPromoTypesBadgeColor {
+  theme String
+  value String
+}
+
+type ByProductChangesPromoTypesTextColor {
+  theme String
+  value String
+}
+
+type ByProductsInStoreCategory {
+  category_id        String?
+  full_category_name String
+  id                 Int?
+  /// Multiple data types found: String: 86.4%, Int: 13.6% out of 22 sampled entries
+  inner_category_id  Json
+  name               String
+  title              String?
+}
+
+type ByProductsInStoreNutritionFacts {
+  /// Multiple data types found: Float: 5.8%, Int: 94.2% out of 121 sampled entries
+  calories      Json?
+  /// Multiple data types found: Float: 44.6%, Int: 55.4% out of 92 sampled entries
+  carbohydrates Json?
+  /// Multiple data types found: Float: 45.5%, Int: 54.5% out of 101 sampled entries
+  fat           Json?
+  /// Multiple data types found: Float: 54.8%, Int: 45.2% out of 104 sampled entries
+  protein       Json?
+}
+
+type ByProductsInStorePicture {
+  scale String
+  url   String
+}
+
+type ByProductsInStorePromoTypes {
+  badgeColor ByProductsInStorePromoTypesBadgeColor[]
+  id         Int
+  name       String
+  pictureUri String
+  text       String
+  textColor  ByProductsInStorePromoTypesTextColor[]
+  type       String
+}
+
+type ByProductsInStorePromoTypesBadgeColor {
+  theme String
+  value String
+}
+
+type ByProductsInStorePromoTypesTextColor {
+  theme String
+  value String
+}
+
+type ByProductsInStoreWeightData {
+  price_per_kg    String
+  quantim_value_g Int
+}
+
+type ByProductsNutritionFacts {
+  /// Multiple data types found: Float: 5.4%, Int: 94.6% out of 149 sampled entries
+  calories      Json?
+  /// Multiple data types found: Float: 39.5%, Int: 60.5% out of 124 sampled entries
+  carbohydrates Json?
+  /// Multiple data types found: Float: 40%, Int: 60% out of 125 sampled entries
+  fat           Json?
+  /// Multiple data types found: Float: 48%, Int: 52% out of 125 sampled entries
+  protein       Json?
+}
+
+type KzCategoriesStoresWithCategory {
+  id                 String  @map("_id") @db.ObjectId
+  full_category_name String?
+  inner_category_id  String
+  store_id           String  @db.ObjectId
+}
+
+type KzProductChangesPicture {
+  scale String
+  url   String
+}
+
+type KzProductChangesWeightData {
+  price_per_kg    String
+  quantim_value_g Int
+}
+
+type KzProductsInStorePicture {
+  scale String
+  url   String
+}
+
+type KzProductsInStoreWeightData {
+  price_per_kg    String
+  quantim_value_g Int
+}
+
+type LtCategoriesStoresWithCategory {
+  id                String @map("_id") @db.ObjectId
+  inner_category_id String
+  store_id          String @db.ObjectId
+}
+
+type ParsersAugmentation {
+  id        String @map("_id") @db.ObjectId
+  country   String
+  run_time  Int?
+  status    String
+  type_name String
+}
+
+type ParsersRevalidate {
+  id                String  @map("_id") @db.ObjectId
+  country           String
+  error_description String?
+  status            String
+}
+
+type ParsersStores {
+  id                String  @map("_id") @db.ObjectId
+  attempt           Int?
+  error_description String?
+  error_items       Int?
+  parsed_items      Int?
+  run_time          Int?
+  status            String
+  store_name        String
+  timeSaveInDb      Int?
+}
+
+type PlCategoriesStoresWithCategory {
+  id                 String  @map("_id") @db.ObjectId
+  full_category_name String?
+  inner_category_id  String
+  store_id           String  @db.ObjectId
+}
+
+type RuCategoriesStoresWithCategory {
+  id                 String  @map("_id") @db.ObjectId
+  full_category_name String?
+  inner_category_id  String
+  store_id           String  @db.ObjectId
+}
+
+type RuProductChangesPicture {
+  scale String
+  url   String
+}
+
+type RuProductChangesWeightData {
+  price_per_kg    String
+  quantim_value_g Int
+}
+
+type RuProductsInStorePicture {
+  scale String
+  url   String
+}
+
+type RuProductsInStorePromoTypes {
+  badgeColor RuProductsInStorePromoTypesBadgeColor[]
+  id         Int
+  name       String
+  pictureUri String?
+  text       String
+  textColor  RuProductsInStorePromoTypesTextColor[]
+  type       String
+}
+
+type RuProductsInStorePromoTypesBadgeColor {
+  theme String
+  value String
+}
+
+type RuProductsInStorePromoTypesTextColor {
+  theme String
+  value String
+}
+
+type UaCategoriesStoresWithCategory {
+  id                String @map("_id") @db.ObjectId
+  inner_category_id String
+  store_id          String @db.ObjectId
+}
+
+type UzCategoriesStoresWithCategory {
+  id                 String  @map("_id") @db.ObjectId
+  full_category_name String?
+  inner_category_id  String
+  store_id           String  @db.ObjectId
+}
+
+type UzProductChangesPicture {
+  scale String
+  url   String
+}
+
+type UzProductsInStorePicture {
+  scale String
+  url   String
+}
+
+model BY_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  app_category         Boolean?
+  children             String[]
+  full_category_name   String?
+  in_stock             Boolean?
+  main_category        Boolean?
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  skip_category        Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category ByCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("BY-categories")
+}
+
+model BY_dates {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  v               Int      @map("__v")
+  available       Boolean?
+  date            DateTime @db.Date
+  in_store_id     String?
+  nameChange      String?
+  old_weight      String?
+  original_weight String?
+  /// Multiple data types found: Float: 98.2%, Int: 1.8% out of 1000 sampled entries
+  price           Json
+  pricePerKg      Float?
+  product_id      String   @db.ObjectId
+  public_id       String?
+  store_id        String   @db.ObjectId
+  weight          String
+
+  @@index([date], map: "date_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("BY-dates")
+}
+
+model BY_productChanges {
+  id                String                          @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                            @map("__v")
+  adult             Boolean?
+  available         Boolean?
+  /// Multiple data types found: Float: 99.5%, Int: 0.5% out of 387 sampled entries
+  barcode           Json?
+  brand_id          String?                         @db.ObjectId
+  brand_name        String?
+  category          ByProductChangesCategory?
+  /// Multiple data types found: String: 14.9%, String (ObjectId): 85.1% out of 882 sampled entries
+  category_id       Json?
+  composition       String?
+  create_dt         DateTime?                       @db.Date
+  date              DateTime                        @db.Date
+  decimalPrice      String?
+  decimalPromoPrice String?
+  description       String?
+  fromProduct       Boolean?
+  haveProblem       String?
+  id_               Float?                          @map("id")
+  inStock           Int?
+  in_stock          Boolean?
+  in_store_id       String?
+  manufacturer      String?
+  name              String?
+  nameChange        String?
+  nutrition_facts   ByProductChangesNutritionFacts?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  original_weight   String?
+  picture           ByProductChangesPicture?
+  picture_url       String?
+  /// Multiple data types found: Float: 95.1%, Int: 4.9% out of 894 sampled entries
+  price             Json?
+  /// Multiple data types found: Float: 66.7%, Int: 33.3% out of 12 sampled entries
+  pricePerKg        Json?
+  priceUnit         String?
+  /// Multiple data types found: Float: 3%, Int: 97% out of 266 sampled entries
+  price_difference  Json?
+  product_id        String                          @db.ObjectId
+  promoPrice        Int?
+  promoTypes        ByProductChangesPromoTypes[]
+  /// Multiple data types found: String: 98.6%, Int: 1.4% out of 875 sampled entries
+  public_id         Json?
+  shippingType      String?
+  slug              String?
+  some_store_id     String?
+  sortOrder         Int?
+  source            String
+  store_id          String?                         @db.ObjectId
+  uid               String?
+  weight            String?
+  weights           String[]
+
+  @@map("BY-productChanges")
+}
+
+model BY_products {
+  id               String                    @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int                       @map("__v")
+  /// Multiple data types found: Float: 97.2%, Int: 2.8% out of 320 sampled entries
+  barcode          Json?
+  brand_id         String?                   @db.ObjectId
+  brand_name       String?
+  canonical        String?                   @db.ObjectId
+  /// Multiple data types found: String: 1.1%, String (ObjectId): 98.9% out of 1000 sampled entries
+  category_id      Json
+  composition      String?
+  description      String?
+  in_stock         Boolean
+  in_stores        String[]
+  /// Multiple data types found: Float: 94.9%, Int: 5.1% out of 824 sampled entries
+  lastPrice        Json?
+  manufacturer     String?
+  name             String
+  nutrition_facts  ByProductsNutritionFacts?
+  original_weight  String?
+  picture_url      String
+  priceUnit        String?
+  /// Multiple data types found: Float: 5.6%, Int: 94.4% out of 998 sampled entries
+  price_difference Json?
+  similar_products String[]
+  skip             Boolean?
+  slug             String
+  weight           String
+
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([slug], map: "slug_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([canonical], map: "canonical_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("BY-products")
+}
+
+model BY_productsInStore {
+  id                  String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                   Int?                             @map("__v")
+  adult               Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  app_picture         Json?
+  available           Boolean?
+  /// Multiple data types found: Float: 98.1%, Int: 1.9% out of 425 sampled entries
+  barcode             Json?
+  /// Field referred in an index, but found no data to define the type.
+  barcodes            Json?
+  brand_id            String?                          @db.ObjectId
+  brand_name          String?
+  /// Field referred in an index, but found no data to define the type.
+  canonical           Json?
+  category            ByProductsInStoreCategory?
+  category_id         String                           @db.ObjectId
+  composition         String?
+  create_dt           DateTime                         @db.Date
+  date                DateTime                         @db.Date
+  decimalPrice        String?
+  decimalPromoPrice   String?
+  description         String?
+  format_product_name String?
+  formatted_name      String?
+  fromProduct         Boolean?
+  full_category_name  String?
+  haveProblem         String?
+  /// Multiple data types found: Float: 92.9%, Int: 7.1% out of 14 sampled entries
+  id_                 Json?                            @map("id")
+  /// Multiple data types found: Boolean: 12.5%, Int: 87.5% out of 16 sampled entries
+  inStock             Json?
+  in_stock            Boolean?
+  in_store_id         String
+  manufacturer        String?
+  name                String
+  nameChange          String?
+  nutrition_facts     ByProductsInStoreNutritionFacts?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups        Json?
+  original_weight     String?
+  picture             ByProductsInStorePicture?
+  picture_url         String
+  /// Multiple data types found: Float: 94.5%, Int: 5.5% out of 1000 sampled entries
+  price               Json
+  pricePerKg          Float?
+  priceUnit           String?
+  /// Multiple data types found: Float: 2.3%, Int: 97.7% out of 397 sampled entries
+  price_difference    Json?
+  promoPrice          Int?
+  promoTypes          ByProductsInStorePromoTypes[]
+  /// Multiple data types found: String: 98.4%, Int: 1.6% out of 1000 sampled entries
+  public_id           Json
+  shippingType        String?
+  slug                String?
+  some_store_id       String?
+  sortOrder           Int?
+  store_id            String                           @db.ObjectId
+  uid                 String?
+  weight              String
+  weight_data         ByProductsInStoreWeightData?
+  weights             String[]
+
+  @@index([public_id], map: "public_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([barcode], map: "barcode_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([name], map: "name_1")
+  @@index([canonical], map: "canonical_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@map("BY-productsInStore")
+}
+
+model BY_stores {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                   Int      @map("__v")
+  canonical           String?  @db.ObjectId
+  format_product_name Boolean?
+  formatted_name      String?
+  logo_url            String?
+  name                String   @unique(map: "name_1")
+  skip                Boolean?
+  translated_name     String
+
+  @@map("BY-stores")
+}
+
+model KZ_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  app_category_id      String?                          @db.ObjectId
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  full_category_name   String?
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category KzCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("KZ-categories")
+}
+
+model KZ_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String?
+  nameChange  String?
+  price       Int
+  product_id  String   @db.ObjectId
+  public_id   String?
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([product_id], map: "product_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([date], map: "date_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@map("KZ-dates")
+}
+
+model KZ_productChanges {
+  id                String                      @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                        @map("__v")
+  adult             Boolean?
+  available         Boolean?
+  /// Multiple data types found: Float: 98.6%, Int: 1.4% out of 487 sampled entries
+  barcode           Json?
+  /// Multiple data types found: Array(Float): 99.1%, Array(Int): 0.9% out of 117 sampled entries
+  barcodes          Json?
+  /// Multiple data types found: String: 0.1%, String (ObjectId): 99.9% out of 890 sampled entries
+  category_id       Json?
+  create_dt         DateTime?                   @db.Date
+  date              DateTime                    @db.Date
+  decimalPrice      String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  decimalPromoPrice Json?
+  description       String?
+  fromProduct       Boolean?
+  id_               Float?                      @map("id")
+  inStock           Int?
+  in_stock          Boolean?
+  in_store_id       String?
+  name              String?
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           KzProductChangesPicture?
+  picture_url       String?
+  price             Int?
+  price_difference  Int?
+  product_id        String                      @db.ObjectId
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoPrice        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoTypes        Json?
+  public_id         String?
+  shippingType      String?
+  some_store_id     String?
+  sortOrder         Int?
+  source            String
+  store_id          String?                     @db.ObjectId
+  uid               String?
+  weight            String?
+  weight_data       KzProductChangesWeightData?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@map("KZ-productChanges")
+}
+
+model KZ_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  /// Multiple data types found: Float: 98.9%, Int: 1.1% out of 784 sampled entries
+  barcode          Json?
+  canonical        String?  @db.ObjectId
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  category_id      Json?
+  description      String?
+  in_stock         Boolean
+  in_stores        String[]
+  lastPrice        Int?
+  name             String
+  picture_url      String
+  /// Multiple data types found: Float: 20.3%, Int: 79.7% out of 908 sampled entries
+  price_difference Json?
+  similar_products String[]
+  skip             Boolean?
+  slug             String
+  weight           String
+
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([slug], map: "slug_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("KZ-products")
+}
+
+model KZ_productsInStore {
+  id                String                       @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                         @map("__v")
+  adult             Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  app_picture       Json?
+  available         Boolean?
+  /// Multiple data types found: Float: 98.3%, Int: 1.7% out of 931 sampled entries
+  barcode           Json?
+  /// Multiple data types found: Array(Float): 98.6%, Array(Int): 1.4% out of 143 sampled entries
+  barcodes          Json?
+  /// Multiple data types found: String: 0.1%, String (ObjectId): 99.9% out of 1000 sampled entries
+  category_id       Json
+  create_dt         DateTime?                    @db.Date
+  date              DateTime                     @db.Date
+  decimalPrice      String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  decimalPromoPrice Json?
+  description       String?
+  fromProduct       Boolean?
+  id_               Float?                       @map("id")
+  inStock           Int?
+  in_stock          Boolean
+  in_store_id       String
+  name              String
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           KzProductsInStorePicture?
+  picture_url       String
+  price             Int
+  price_difference  Int?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoPrice        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoTypes        Json?
+  public_id         String
+  shippingType      String?
+  some_store_id     String?
+  sortOrder         Int?
+  store_id          String                       @db.ObjectId
+  uid               String?
+  weight            String
+  weight_data       KzProductsInStoreWeightData?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([barcode], map: "barcode_1")
+  @@index([name], map: "name_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("KZ-productsInStore")
+}
+
+model KZ_stores {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  v               Int     @map("__v")
+  name            String  @unique(map: "name_1")
+  translated_name String?
+
+  @@map("KZ-stores")
+}
+
+model LT_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  full_category_name   String
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category LtCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("LT-categories")
+}
+
+model LT_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String
+  nameChange  String
+  price       Float
+  product_id  String   @db.ObjectId
+  public_id   String
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([date], map: "date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("LT-dates")
+}
+
+model LT_productChanges {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  barcode       Float?
+  barcodes      Float[]
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  description   String?
+  in_store_id   String
+  info_checked  Boolean?
+  name          String
+  nameChange    String
+  picture_url   String
+  /// Multiple data types found: Float: 99.9%, Int: 0.1% out of 1000 sampled entries
+  price         Json
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg    Json?
+  product_id    String   @db.ObjectId
+  public_id     String
+  slug          String
+  some_store_id String
+  source        String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@map("LT-productChanges")
+}
+
+model LT_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  barcode          Float?
+  /// Field referred in an index, but found no data to define the type.
+  canonical        Json?
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  category_id      Json?
+  description      String?
+  /// Field referred in an index, but found no data to define the type.
+  in_stock         Json?
+  in_stores        String[]
+  name             String
+  picture_url      String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  similar_products Json?
+  /// Field referred in an index, but found no data to define the type.
+  skip             Json?
+  slug             String
+  weight           String
+
+  @@index([slug], map: "slug_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("LT-products")
+}
+
+model LT_productsInStore {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  app_picture   Json?
+  barcode       Float?
+  barcodes      Float[]
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  description   String?
+  /// Field referred in an index, but found no data to define the type.
+  in_stock      Json?
+  in_store_id   String
+  info_checked  Boolean?
+  name          String
+  nameChange    String
+  picture_url   String
+  price         Float
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg    Json?
+  public_id     String
+  slug          String
+  some_store_id String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@index([barcode], map: "barcode_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([name], map: "name_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("LT-productsInStore")
+}
+
+model LT_stores {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int    @map("__v")
+  name String @unique(map: "name_1")
+
+  @@map("LT-stores")
+}
+
+model PL_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  date                 DateTime?                        @db.Date
+  full_category_name   String?
+  in_stock             Boolean?
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category PlCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("PL-categories")
+}
+
+model PL_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String?
+  nameChange  String?
+  /// Multiple data types found: Float: 94.5%, Int: 5.5% out of 1000 sampled entries
+  price       Json
+  product_id  String   @db.ObjectId
+  public_id   String?
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([date], map: "date_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("PL-dates")
+}
+
+model PL_productChanges {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int?      @map("__v")
+  barcode          Float?
+  brand_id         String?   @db.ObjectId
+  brand_name       String?
+  category_id      String    @db.ObjectId
+  create_dt        DateTime? @db.Date
+  date             DateTime  @db.Date
+  fromProduct      Boolean?
+  inStock          Boolean?
+  in_stock         Boolean?
+  in_store_id      String?
+  name             String?
+  nameChange       String?
+  picture_url      String?
+  /// Multiple data types found: Float: 93.8%, Int: 6.3% out of 992 sampled entries
+  price            Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg       Json?
+  price_difference Int?
+  product_id       String    @db.ObjectId
+  public_id        String?
+  slug             String?
+  some_store_id    String?
+  source           String
+  store_id         String?   @db.ObjectId
+  weight           String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights          Json?
+
+  @@map("PL-productChanges")
+}
+
+model PL_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  barcode          Float?
+  brand_id         String?  @db.ObjectId
+  brand_name       String?
+  /// Field referred in an index, but found no data to define the type.
+  canonical        Json?
+  categories_id    String[]
+  category_id      String?  @db.ObjectId
+  in_stock         Boolean?
+  in_stores        String[]
+  /// Multiple data types found: Float: 94.9%, Int: 5.1% out of 722 sampled entries
+  lastPrice        Json?
+  name             String
+  picture_url      String
+  price_difference Int?
+  similar_products String[]
+  skip             Boolean?
+  slug             String
+  weight           String
+
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([slug], map: "slug_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("PL-products")
+}
+
+model PL_productsInStore {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  app_picture   Json?
+  /// Multiple data types found: Float: 99.7%, Int: 0.3% out of 652 sampled entries
+  barcode       Json?
+  /// Field referred in an index, but found no data to define the type.
+  barcodes      Json?
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  description   String?
+  inStock       Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  in_stock      Json?
+  in_store_id   String
+  info_checked  Boolean?
+  name          String
+  nameChange    String
+  picture_url   String
+  /// Multiple data types found: Float: 99.9%, Int: 0.1% out of 675 sampled entries
+  price         Json
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg    Json?
+  public_id     String
+  slug          String?
+  some_store_id String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@index([barcode], map: "barcode_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([name], map: "name_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("PL-productsInStore")
+}
+
+model PL_stores {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int    @map("__v")
+  name String @unique(map: "name_1")
+
+  @@map("PL-stores")
+}
+
+model RU_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  children             String[]
+  full_category_name   String?
+  name                 String
+  parentId             String?                          @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category RuCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("RU-categories")
+}
+
+model RU_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  available   Boolean?
+  date        DateTime @db.Date
+  in_store_id String?
+  nameChange  String?
+  /// Multiple data types found: Float: 0.4%, Int: 99.6% out of 1000 sampled entries
+  price       Json
+  product_id  String   @db.ObjectId
+  public_id   String?
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([date], map: "date_1")
+  @@index([date, product_id], map: "date_1_product_id_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("RU-dates")
+}
+
+model RU_productChanges {
+  id                String                      @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                        @map("__v")
+  adult             Boolean?
+  available         Boolean?
+  /// Multiple data types found: String: 0.7%, String (ObjectId): 99.3% out of 915 sampled entries
+  category_id       Json?
+  create_dt         DateTime?                   @db.Date
+  date              DateTime                    @db.Date
+  decimalPrice      String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  decimalPromoPrice Json?
+  description       String?
+  fromProduct       Boolean?
+  id_               Float?                      @map("id")
+  inStock           Int?
+  in_stock          Boolean?
+  in_store_id       String?
+  name              String?
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           RuProductChangesPicture?
+  picture_url       String?
+  /// Multiple data types found: Float: 0.6%, Int: 99.4% out of 894 sampled entries
+  price             Json?
+  /// Multiple data types found: Float: 8.2%, Int: 91.8% out of 453 sampled entries
+  price_difference  Json?
+  product_id        String                      @db.ObjectId
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoPrice        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoTypes        Json?
+  public_id         String?
+  shippingType      String?
+  some_store_id     String?
+  sortOrder         Int?
+  source            String
+  store_id          String?                     @db.ObjectId
+  uid               String?
+  weight            String?
+  weight_data       RuProductChangesWeightData?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@map("RU-productChanges")
+}
+
+model RU_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  canonical        String?  @db.ObjectId
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  category_id      Json?
+  description      String
+  in_stock         Boolean?
+  in_stores        String[]
+  /// Multiple data types found: Float: 0.9%, Int: 99.1% out of 940 sampled entries
+  lastPrice        Json?
+  name             String
+  picture_url      String
+  /// Multiple data types found: Float: 11.1%, Int: 88.9% out of 1000 sampled entries
+  price_difference Json
+  similar_products String[]
+  skip             Boolean?
+  slug             String
+  weight           String
+
+  @@index([skip], map: "skip_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([canonical], map: "canonical_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([slug], map: "slug_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("RU-products")
+}
+
+model RU_productsInStore {
+  id                String                        @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                          @map("__v")
+  adult             Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  app_picture       Json?
+  available         Boolean?
+  barcode           Float?
+  barcodes          Float[]
+  /// Multiple data types found: String: 0.5%, String (ObjectId): 99.5% out of 1000 sampled entries
+  category_id       Json
+  create_dt         DateTime?                     @db.Date
+  date              DateTime?                     @db.Date
+  decimalPrice      String?
+  decimalPromoPrice String?
+  description       String
+  fromProduct       Boolean?
+  /// Multiple data types found: Float: 80%, Int: 20% out of 5 sampled entries
+  id_               Json?                         @map("id")
+  inStock           Int?
+  in_stock          Boolean?
+  in_store_id       String
+  name              String
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           RuProductsInStorePicture?
+  picture_url       String
+  /// Multiple data types found: Float: 0.9%, Int: 99.1% out of 991 sampled entries
+  price             Json?
+  pricePerKg        Float?
+  /// Multiple data types found: Float: 7.3%, Int: 92.7% out of 496 sampled entries
+  price_difference  Json?
+  promoPrice        Int?
+  promoTypes        RuProductsInStorePromoTypes[]
+  public_id         String
+  shippingType      String?
+  slug              String?
+  /// Multiple data types found: String: 99.8%, Int: 0.2% out of 403 sampled entries
+  some_store_id     Json?
+  sortOrder         Int?
+  store_id          String                        @db.ObjectId
+  uid               String?
+  weight            String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([barcode], map: "barcode_1")
+  @@index([name], map: "name_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("RU-productsInStore")
+}
+
+model RU_stores {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  v               Int?    @map("__v")
+  logo_url        String?
+  name            String  @unique(map: "name_1")
+  translated_name String?
+
+  @@map("RU-stores")
+}
+
+model UA_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  full_category_name   String
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category UaCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("UA-categories")
+}
+
+model UA_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String
+  nameChange  String?
+  price       Int
+  /// Multiple data types found: Float: 41%, Int: 59% out of 713 sampled entries
+  pricePerKg  Json?
+  product_id  String   @db.ObjectId
+  public_id   String
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([date], map: "date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("UA-dates")
+}
+
+model UA_productChanges {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  barcode       Float?
+  category_id   String?   @db.ObjectId
+  create_dt     DateTime? @db.Date
+  date          DateTime  @db.Date
+  description   String?
+  in_store_id   String?
+  info_checked  Boolean?
+  name          String?
+  nameChange    String?
+  picture_url   String?
+  price         Int?
+  /// Multiple data types found: Float: 39.4%, Int: 60.6% out of 495 sampled entries
+  pricePerKg    Json?
+  product_id    String    @db.ObjectId
+  public_id     String?
+  slug          String?
+  some_store_id String?
+  source        String
+  store_id      String?   @db.ObjectId
+  weight        String?
+
+  @@map("UA-productChanges")
+}
+
+model UA_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  barcode          Float?
+  /// Field referred in an index, but found no data to define the type.
+  canonical        Json?
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  category_id      Json?
+  description      String?
+  /// Field referred in an index, but found no data to define the type.
+  in_stock         Json?
+  in_stores        String[]
+  name             String
+  picture_url      String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  similar_products Json?
+  /// Field referred in an index, but found no data to define the type.
+  skip             Json?
+  slug             String
+  weight           String
+
+  @@index([slug], map: "slug_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("UA-products")
+}
+
+model UA_productsInStore {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  app_picture   Json?
+  barcode       Float?
+  /// Field referred in an index, but found no data to define the type.
+  barcodes      Json?
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  description   String?
+  /// Field referred in an index, but found no data to define the type.
+  in_stock      Json?
+  in_store_id   String
+  info_checked  Boolean?
+  name          String
+  nameChange    String
+  picture_url   String
+  price         Int
+  /// Multiple data types found: Float: 42.3%, Int: 57.7% out of 26 sampled entries
+  pricePerKg    Json
+  public_id     String
+  slug          String
+  some_store_id String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@index([barcode], map: "barcode_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([name], map: "name_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("UA-productsInStore")
+}
+
+model UA_stores {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int    @map("__v")
+  name String @unique(map: "name_1")
+
+  @@map("UA-stores")
+}
+
+model UZ_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  full_category_name   String?
+  name                 String
+  /// Field referred in an index, but found no data to define the type.
+  parentId             Json?
+  /// Field referred in an index, but found no data to define the type.
+  slug                 Json?
+  stores_with_category UzCategoriesStoresWithCategory[]
+
+  @@index([full_category_name], map: "full_category_name_1")
+  @@index([children], map: "children_1")
+  @@index([parentId], map: "parentId_1")
+  @@index([name], map: "name_1")
+  @@index([slug], map: "slug_1")
+  @@map("UZ-categories")
+}
+
+model UZ_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String?
+  price       Int
+  product_id  String   @db.ObjectId
+  public_id   String?
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([product_id], map: "product_id_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([date], map: "date_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@map("UZ-dates")
+}
+
+model UZ_productChanges {
+  id                String                   @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                     @map("__v")
+  adult             Boolean?
+  available         Boolean?
+  /// Multiple data types found: String: 0.5%, String (ObjectId): 99.5% out of 766 sampled entries
+  category_id       Json?
+  create_dt         DateTime?                @db.Date
+  date              DateTime                 @db.Date
+  decimalPrice      String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  decimalPromoPrice Json?
+  description       String?
+  fromProduct       Boolean?
+  id_               Float?                   @map("id")
+  inStock           Int?
+  in_stock          Boolean?
+  in_store_id       String?
+  name              String?
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           UzProductChangesPicture?
+  picture_url       String?
+  price             Int?
+  price_difference  Int?
+  product_id        String                   @db.ObjectId
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoPrice        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoTypes        Json?
+  public_id         String?
+  shippingType      String?
+  some_store_id     String?
+  sortOrder         Int?
+  source            String
+  store_id          String?                  @db.ObjectId
+  uid               String?
+  weight            String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@map("UZ-productChanges")
+}
+
+model UZ_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  /// Field referred in an index, but found no data to define the type.
+  canonical        Json?
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  category_id      Json?
+  description      String
+  in_stock         Boolean
+  in_stores        String[]
+  lastPrice        Int?
+  name             String
+  picture_url      String
+  /// Multiple data types found: Float: 3%, Int: 97% out of 1000 sampled entries
+  price_difference Json
+  similar_products String[]
+  skip             Boolean
+  slug             String
+  weight           String
+
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([slug], map: "slug_1")
+  @@index([category_id], map: "category_id_1")
+  @@map("UZ-products")
+}
+
+model UZ_productsInStore {
+  id                String                    @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int?                      @map("__v")
+  adult             Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  app_picture       Json?
+  available         Boolean?
+  /// Field referred in an index, but found no data to define the type.
+  barcode           Json?
+  /// Field referred in an index, but found no data to define the type.
+  barcodes          Json?
+  /// Multiple data types found: String: 0.3%, String (ObjectId): 99.7% out of 1000 sampled entries
+  category_id       Json
+  create_dt         DateTime?                 @db.Date
+  date              DateTime                  @db.Date
+  decimalPrice      String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  decimalPromoPrice Json?
+  description       String
+  fromProduct       Boolean?
+  id_               Float?                    @map("id")
+  inStock           Int?
+  in_stock          Boolean
+  in_store_id       String
+  name              String
+  nameChange        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  optionGroups      Json?
+  picture           UzProductsInStorePicture?
+  picture_url       String
+  price             Int
+  price_difference  Int?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoPrice        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  promoTypes        Json?
+  public_id         String
+  shippingType      String?
+  some_store_id     String?
+  sortOrder         Int?
+  store_id          String                    @db.ObjectId
+  uid               String?
+  weight            String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  weights           Json?
+
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([barcode], map: "barcode_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([name], map: "name_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([app_picture], map: "app_picture_1")
+  @@index([picture_url], map: "picture_url_1")
+  @@map("UZ-productsInStore")
+}
+
+model UZ_stores {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int    @map("__v")
+  name String @unique(map: "name_1")
+
+  @@map("UZ-stores")
+}
+
+model app_categories {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  v        Int     @map("__v")
+  name     String
+  parentId String? @db.ObjectId
+
+  @@map("app-categories")
+}
+
+model appcategories {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  v        Int     @map("__v")
+  name     String
+  parentId String? @db.ObjectId
+}
+
+model brands {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  name        String?
+  names       String[]
+  other_names String[]
+}
+
+model lt_categories {
+  id                   String                           @id @default(auto()) @map("_id") @db.ObjectId
+  v                    Int                              @map("__v")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  children             Json?
+  full_category_name   String
+  name                 String
+  stores_with_category LtCategoriesStoresWithCategory[]
+
+  @@index([children], map: "children_1")
+  @@index([full_category_name], map: "full_category_name_1")
+  @@map("lt-categories")
+}
+
+model lt_dates {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int      @map("__v")
+  date        DateTime @db.Date
+  in_store_id String
+  nameChange  String
+  price       Float
+  product_id  String   @db.ObjectId
+  public_id   String
+  store_id    String   @db.ObjectId
+  weight      String
+
+  @@index([date], map: "date_1")
+  @@index([product_id], map: "product_id_1")
+  @@index([product_id, date], map: "product_id_1_date_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@map("lt-dates")
+}
+
+model lt_productChanges {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  in_store_id   String
+  name          String
+  nameChange    String
+  picture_url   String
+  price         Float
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg    Json?
+  product_id    String   @db.ObjectId
+  public_id     String
+  slug          String
+  some_store_id String
+  source        String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@map("lt-productChanges")
+}
+
+model lt_products {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int      @map("__v")
+  /// Field referred in an index, but found no data to define the type.
+  canonical        Json?
+  categories_id    String[]
+  /// Field referred in an index, but found no data to define the type.
+  in_stock         Json?
+  in_stores        String[]
+  name             String
+  picture_url      String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  similar_products Json?
+  /// Field referred in an index, but found no data to define the type.
+  skip             Json?
+  slug             String
+  weight           String
+
+  @@index([slug], map: "slug_1")
+  @@index([in_stores], map: "in_stores_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([skip], map: "skip_1")
+  @@index([categories_id], map: "categories_id_1")
+  @@index([in_stores, canonical], map: "in_stores_1_canonical_1")
+  @@map("lt-products")
+}
+
+model lt_productsInStore {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  barcode       Json?
+  /// Field referred in an index, but found no data to define the type.
+  barcodes      Json?
+  category_id   String   @db.ObjectId
+  create_dt     DateTime @db.Date
+  date          DateTime @db.Date
+  /// Field referred in an index, but found no data to define the type.
+  in_stock      Json?
+  in_store_id   String
+  name          String
+  nameChange    String
+  picture_url   String
+  price         Float
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  pricePerKg    Json?
+  public_id     String
+  slug          String
+  some_store_id String
+  store_id      String   @db.ObjectId
+  weight        String
+
+  @@index([barcode], map: "barcode_1")
+  @@index([barcodes], map: "barcodes_1")
+  @@index([name], map: "name_1")
+  @@index([store_id], map: "store_id_1")
+  @@index([in_stock], map: "in_stock_1")
+  @@index([public_id], map: "public_id_1")
+  @@index([in_store_id], map: "in_store_id_1")
+  @@index([name, store_id], map: "name_1_store_id_1")
+  @@index([id, barcode], map: "_id_1_barcode_1")
+  @@map("lt-productsInStore")
+}
+
+model lt_stores {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int    @map("__v")
+  name String @unique(map: "name_1")
+
+  @@map("lt-stores")
+}
+
+model parsers {
+  id                  String                @id @default(auto()) @map("_id") @db.ObjectId
+  v                   Int                   @map("__v")
+  augmentation        ParsersAugmentation[]
+  date                DateTime              @db.Date
+  parsingEnd          Boolean?
+  revalidate          ParsersRevalidate[]
+  stores              ParsersStores[]
+  wasRevalidatedBYWeb Boolean?
+}

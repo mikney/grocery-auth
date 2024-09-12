@@ -1,18 +1,10 @@
-import {
-    Controller,
-    Get,
-    HttpStatus,
-    Param,
-    Query,
-    Req,
-    Res,
-} from '@nestjs/common';
+import { Controller, Get, HttpStatus, Query, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as jwt from 'jsonwebtoken';
 import { Response } from 'express';
 import * as crypto from 'crypto';
 
-export const secretKey = 'your_secret_key';
+export const secretKey = 'lolo4ka';
 
 @Controller()
 export class AppController {
@@ -32,7 +24,7 @@ export class AppController {
         @Query('secret') secret: string,
     ) {
         if (secret !== process.env.WEB_SECRET) {
-            console.log('no secret request');
+            console.log('no secret request to auth');
             response.status(HttpStatus.BAD_REQUEST).send();
             return;
         }

@@ -23,10 +23,8 @@ const limiter = rateLimit({
 
         const result = await dnsChecker.isBot(ip);
         if (result) {
-            console.log(`granted for ${ip}`);
             return next();
         } else {
-            console.log(`429 for ${ip}`);
             return response.status(429).send();
         }
     },
@@ -34,19 +32,15 @@ const limiter = rateLimit({
         const token = req.query?.token as string | undefined;
         const ip = (req.query?.ip as string | undefined) ?? 'shared';
         dnsChecker.isBot(ip);
-        console.log(ip);
-        console.log(token);
         if (token) {
             try {
                 const data = jwt.verify(token, secretKey) as { uuid: string };
-                console.log(data);
                 req['token'] = true;
 
                 return data.uuid;
             } catch (e) {
                 const error = e as { message: string };
                 if (error?.message === 'jwt expired') {
-                    console.log('jwt expired');
                     const data = jwt.decode(token) as { uuid: string };
                     req['uuid'] = data.uuid;
                     req['isTokenValid'] = true;
@@ -55,7 +49,6 @@ const limiter = rateLimit({
                     }
                 }
                 req['token'] = false;
-                console.log(`Error in verify: ` + e?.message);
                 return ip;
             }
         } else {
