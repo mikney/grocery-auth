@@ -9,8 +9,21 @@ export class ParsingService {
     initialTime = { hours: 6, minutes: 30 };
     parsingInterval: number = 0;
     instanceId = 'fv41k2lqgenvk4p01hg6';
+
     constructor(private prisma: PrismaService) {
-        this.parsingLoop();
+        this.getAuthTokenLoop().then(() => {
+            this.parsingLoop();
+        });
+    }
+
+    async getAuthTokenLoop() {
+        await this.getAuthToken();
+        setInterval(
+            () => {
+                this.getAuthToken();
+            },
+            60 * 60 * 1000,
+        );
     }
 
     parsingLoop() {
@@ -71,7 +84,6 @@ export class ParsingService {
     }
 
     async startParsingVM() {
-        await this.getAuthToken();
         const response = await axios.post<{ error: any }>(
             `https://compute.api.cloud.yandex.net/compute/v1/instances/${this.instanceId}:start`,
             {},
@@ -85,9 +97,6 @@ export class ParsingService {
     }
 
     async checkVMStatus() {
-        if (!this.authToken) {
-            await this.getAuthToken();
-        }
         const response = await axios.get<{ status: string | 'RUNNING' }>(
             `https://compute.api.cloud.yandex.net/compute/v1/instances/${this.instanceId}`,
             {
@@ -99,7 +108,6 @@ export class ParsingService {
         return response.data;
     }
     async stopParsingVM() {
-        await this.getAuthToken();
         const response = await axios.post<{ error: any }>(
             `https://compute.api.cloud.yandex.net/compute/v1/instances/${this.instanceId}:stop`,
             {},
