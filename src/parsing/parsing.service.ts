@@ -11,9 +11,9 @@ export class ParsingService {
     instanceId = 'fv41k2lqgenvk4p01hg6';
 
     constructor(private prisma: PrismaService) {
-        this.getAuthTokenLoop().then(() => {
-            this.parsingLoop();
-        });
+        // this.getAuthTokenLoop().then(() => {
+        //     this.parsingLoop();
+        // });
     }
 
     async getAuthTokenLoop() {
